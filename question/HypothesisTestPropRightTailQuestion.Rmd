@@ -1,0 +1,15 @@
+---
+pagetitle: "Hypothesis Testing - Proportions Right Tail Test Question"
+params:
+  count: 101 
+  n: 250 
+  p: 0.34
+---
+
+```{r}
+count<-params$count
+n<-params$n 
+p<-params$p
+```
+
+Suppose someone claims a population proportion is $`r 100*p`\%$ but we believe that it is more than this. To test this we take a sample proportion and get $`r count`$ out of $`r n`$. Perform a hypothesis test for this situation.

@@ -1,0 +1,83 @@
+---
+pagetitle: "Solve Backwards Right Tail"
+params:
+  mu: 23
+  sigma: 4
+  area: .15
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+area<-params$area; 
+left_area<-1.0-area
+mu<-params$mu; 
+sigma<-params$sigma; 
+z <- round(qnorm(left_area),2)
+x<-mu + z*sigma
+```
+We have $\mu=`r mu`$ and $\sigma = `r sigma`$. 
+
+We want an x-value whose **right tail area** is $`r area`$ (or $`r 100*area`\%$). 
+
+Here is what the picture looks like: 
+
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+normal_curve(mu,sigma)
+normal_shade_right_area(x,mu,sigma)
+normal_label_point(x, label="x=?")
+```
+
+To do this we first find the z-value that goes with this same right tail area. 
+
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+std_normal_curve()
+std_normal_shade_right_area(z)
+std_normal_label_point(z, label="z=?")
+```
+    
+Since the right tail is **`r area`**, the left tail is **`r left_area`** and so we just need to find the z-value that corresponds to a left tail area of **`r left_area`**.  
+
+We use the table backwards and look for the closest z-value to our area `r left_area`. We may not find it exactly so we look for the entry that is closest to `r left_area`.
+    
+```{r}
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+make_highlighted_z_huxtable(z, 1)
+```
+
+We get this z-value: 
+
+$$ 
+z = `r z` 
+$$
+
+Then we can find the x-value by plugging in the z-value and the $\mu=`r mu`$ and $\sigma = `r sigma`$ (which were given) and solving for x: 
+
+\begin{align} 
+z &= \frac{x-\mu}{\sigma} \\
+`r z` &= \frac{x-`r mu`}{`r sigma`} \\
+`r sigma`(`r z`) &= x-`r mu` \\
+`r sigma*z`+ `r mu` &= x \\ 
+`r x` &= x
+\end{align}
+
+_**Steps to solve for x:**_
+
+1. Plug in $\mu=`r mu`$, $\sigma=`r sigma`$ and $z=`r z`$
+2. Multiple by $`r sigma`$ on both sides
+3. Add $`r mu`$ to both sides as well.
+
+This gives us the x-value that we need. Here is the graph:
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+normal_curve(mu,sigma)
+normal_shade_right_area(x,mu,sigma)
+normal_label_point(x)
+```
+
+So $x=`r x`$ is the x-value that has a right tail area of $`r 100*area`$%. 
+

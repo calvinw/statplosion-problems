@@ -1,0 +1,13 @@
+---
+pagetitle: "Std Normal Area Between Question"
+params:
+  z1: -0.54
+  z2: 1.24
+---
+
+```{r}
+z1<-params$z1
+z2<-params$z2
+```
+
+Find the area between $z_{1}=`r z1`$ and $z_{2}=`r z2`$.

@@ -1,0 +1,17 @@
+---
+pagetitle: "Confidence Interval for Means Question"
+params:
+  xbar: 12.4 
+  s: 5.1 
+  n: 38 
+  confidence: 0.99
+---
+
+```{r}
+xbar<-params$xbar
+s<-params$s
+n<-params$n
+confidence<-params$confidence
+```
+
+Suppose a sample mean is given by $`r xbar`$. Find a `r confidence*100`% confidence interval for this sample mean given the sample standard deviation $s = `r s`$ and the sample size $n=`r n`$. 

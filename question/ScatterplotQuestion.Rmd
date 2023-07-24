@@ -1,0 +1,11 @@
+---
+pagetitle: "Scatterplot Question"
+params:
+  n: 30 
+---
+
+```{r}
+n<-params$n
+```
+
+Find a scatterplot that uses $n=`r n`$ random points. 

@@ -1,0 +1,15 @@
+---
+pagetitle: "Normal Left Tail Area Question"
+params:
+  mu: 30 
+  sigma: 4 
+  x: 25 
+---
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+x<-params$x
+```
+
+Suppose that a normal distribution has mean $`r mu`$ and standard deviation $`r sigma`$. Find the left tail area for $`r x`$.

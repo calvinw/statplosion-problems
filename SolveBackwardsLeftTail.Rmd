@@ -1,0 +1,15 @@
+---
+pagetitle: "Solve Backwards Left Tail Problem"
+params:
+  mu: 18 
+  sigma: 3 
+  area: .25
+---
+
+```{r child="question/SolveBackwardsLeftTailQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/SolveBackwardsLeftTailSolution.Rmd"}
+```

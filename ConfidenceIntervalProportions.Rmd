@@ -1,0 +1,15 @@
+---
+pagetitle: "Confidence Interval for Proportions Problem"
+params:
+  count: 201 
+  n: 518
+  confidence: 0.95
+---
+
+```{r child="question/ConfidenceIntervalProportionsQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/ConfidenceIntervalProportionsSolution.Rmd"}
+```

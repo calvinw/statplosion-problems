@@ -1,0 +1,73 @@
+---
+pagetitle: "Std Normal Area Between Spreadsheet"
+params:
+  z1: -0.54
+  z2: 1.24
+---
+
+```{r, include=F}
+library("statplosion")
+z1<-params$z1; 
+z2<-params$z2; 
+```
+```{r echo=FALSE}
+area1_actual <- pnorm(z1)
+area1_rounded <- round(area1_actual,4)
+nearest_percent1 <- round(area1_rounded*100)
+
+area2_actual <- pnorm(z2)
+area2_rounded <- round(area2_actual,4)
+nearest_percent2 <- round(area2_rounded*100)
+
+area_between <- area2_rounded - area1_rounded
+nearest_percent_between <- round(area_between*100)
+```
+
+Here is the picture of the area we want.  
+
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+std_normal_curve()
+std_normal_shade_area_between(z1,z2)
+std_normal_label_point(z1)
+std_normal_label_point(z2)
+```
+
+We want the shaded region to the left of $z_2=`r z2`$ and to the right of $z_1 = `r z1`$
+
+We will calculate this area using a spreadsheet and the **NORMSDIST** function. 
+
+Since **NORMSDIST** gives us left tails we look up the left tail area for the greater z-value $z_2$ and subtract the left tail area for the lesser z-value $z_1$.
+
+- Type **z1** in cell **B2** 
+- Then type $`r z1`$ into **C2**
+- Type **z2** in cell **B3** 
+- Then type $`r z2`$ into **C3**
+
+```{r}
+spread<-create_hux_spreadsheet(5,4)
+spread<-set_hux_spreadsheet_val(spread, "z1", col="B", row=2) 
+spread<-set_hux_spreadsheet_val(spread, z1, col="C", row=2) 
+spread<-set_hux_spreadsheet_val(spread, "z2", col="B", row=3) 
+spread<-set_hux_spreadsheet_val(spread, z2, col="C", row=3) 
+spread
+```
+    
+- Then type in **area between** in **B4**, 
+- In cell **C4** enter **=NORMSDIST(C3)-NORMSDIST(C2)**, and then hit enter
+    
+```{r}
+spread<-set_hux_spreadsheet_val(spread, "area between", col="B", row=4) 
+spread<-set_hux_spreadsheet_val(spread, "=NORMSDIST(C3)-NORMSDIST(C2)", col="C", row=4) 
+spread
+```
+
+After hitting enter you should see the result as follows:
+
+```{r}
+spread<-set_hux_spreadsheet_val(spread, area_between, col="C", row=4) 
+spread
+```
+
+Rounded to the nearest percent this is `r nearest_percent_between`%. 
+
+This means that the shaded area corresponds to `r nearest_percent_between`% of the entire data.

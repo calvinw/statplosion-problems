@@ -1,0 +1,25 @@
+---
+pagetitle: "Z Value"
+params:
+  mu: 23
+  sigma: 4
+  x: 22.2
+---
+
+```{r}
+x<-params$x; 
+mu<-params$mu; 
+numer<-(x-mu); 
+sigma<-params$sigma; 
+z<-(x-mu)/sigma
+```
+We have $\mu=`r mu`$, $\sigma=`r sigma`$ and $x = `r x`$. 
+
+From these we can find the value of z as follows:
+
+$$
+z=\frac{x-\mu}{\sigma}
+ =\frac{`r x`-`r mu`}{`r sigma`}
+ =\frac{`r numer`}{`r sigma`}
+ =`r round(z,2)`
+$$

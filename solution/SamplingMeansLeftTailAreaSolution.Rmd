@@ -1,0 +1,89 @@
+---
+pagetitle: "Sampling Means Left Tail Area"
+params:
+  mu: 190 
+  sigma: 50 
+  xbar: 180 
+  n: 35 
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+n<-params$n 
+xbar<-params$xbar
+
+stdev <- sigma/sqrt(n)
+numer <- xbar-mu
+
+z <- round(numer/stdev,2)
+area <- round(pnorm(z),4)
+nearestPercent <- round(area*100)
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+```
+
+We have $\bar x=`r xbar`$, $\mu =`r mu`$, $\sigma=`r sigma`$ and $n=`r n`$.
+
+We are interested in how likely it is to get a sample mean $\bar x=`r xbar`$ or below for the $\bar x$-distribution here.
+
+Here is the $\bar x$-distribution showing the area that we want:    
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+normal_curve(mu, stdev, show=FALSE, axis_label=bquote(bar(x)))
+normal_shade_left_area(xbar,mu,stdev)
+normal_label_point(xbar)
+```
+
+Notice:
+
+- The sample mean $\bar x=`r xbar`$ is at the edge of the shaded region we want to find 
+- The population mean $\mu =`r mu`$ is in the center
+
+We want the shaded **_left tail area_** that is to the left of $\bar x = `r xbar`$:
+
+We will find this area by changing the sample mean $\bar x$ into a z-value and then using standard normal table. 
+
+Lets find the z-value using the form of the z-value formula for the $\bar x$-distribution: 
+
+$$
+z=\frac{\bar x-\mu}{\frac{\sigma}{\sqrt{n}}}
+ =\frac{`r xbar`-`r mu`}{\frac{`r sigma`}{\sqrt{`r n`}}}
+ =\frac{`r numer`}{`r sigma/sqrt(n)`}
+ =`r z` 
+$$
+
+Note that we use the $\sqrt{n}$ in the denominator. This is because we are using the $\bar x$-distribution. 
+
+So here is the equivalent left tail area for of $z=`r z`$. 
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+std_normal_curve()
+std_normal_shade_left_area(z)
+std_normal_label_point(z)
+```
+
+This area is the same size as our original area so we just find this one using the standard normal distribution.
+
+We can look up the area in the standard normal z-table using $z=`r z`$  
+    
+We go to the row that has `r u` and then to the column that contains `r h` and we see this: 
+
+```{r}
+make_highlighted_z_huxtable(z, 1)
+```
+
+So that means:
+
+$$
+\text{left tail area} =`r area` 
+$$
+
+Rounded to the nearest percent this is `r nearestPercent`%. This means that the **shaded area corresponds to `r nearestPercent`%** of the entire data.
+
+This means there is a `r nearestPercent`% chance of getting a sample proportion of $\bar x=`r xbar`$ or less for the $\bar x$-distribution with sample size of $n=`r n`$.

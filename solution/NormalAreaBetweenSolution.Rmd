@@ -1,0 +1,99 @@
+---
+pagetitle: "Normal Area Between"
+params:
+  mu: 23
+  sigma: 8 
+  x1: 10
+  x2: 25
+---
+
+```{r}
+library("statplosion")
+```
+
+
+
+```{r}
+x1<-params$x1; 
+x2<-params$x2; 
+mu<-params$mu; 
+sigma<-params$sigma; 
+numer1<-(x1-mu); 
+numer2<-(x2-mu); 
+z1 = (x1-mu)/sigma
+z2 = (x2-mu)/sigma
+```
+
+```{r echo=FALSE}
+area1_actual <- pnorm(z1)
+area1_rounded <- round(area1_actual,4)
+nearest_percent1 <- round(area1_rounded*100)
+
+area2_actual <- pnorm(z2)
+area2_rounded <- round(area2_actual,4)
+nearest_percent2 <- round(area2_rounded*100)
+
+area_between <- area2_rounded - area1_rounded
+nearest_percent_between <- round(area_between*100)
+```
+We have mean $\mu=`r mu`$, $\sigma=`r sigma`$, $x_1 = `r x1`$ and $x_2 = `r x2`$:
+
+Here is the picture of the area we want.  
+
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+normal_curve(mu,sigma)
+normal_shade_area_between(x1,x2,mu,sigma)
+normal_label_point(x1)
+normal_label_point(x2)
+```
+
+We want the shaded region between $x_1=`r x1`$ and $x_2 = `r x2`$
+
+So we first compute the z-values for each of these x-values:
+
+First let's do $x_2=`r x2`$: 
+
+$$
+z_2=\frac{x-\mu}{\sigma}
+ =\frac{`r x2`-`r mu`}{`r sigma`}
+ =\frac{`r numer2`}{`r sigma`}
+ =`r round(z2,2)` 
+$$
+
+Then let's do $x_1=`r x1`$: 
+
+$$
+z_1=\frac{x-\mu}{\sigma}
+ =\frac{`r x1`-`r mu`}{`r sigma`}
+ =\frac{`r numer1`}{`r sigma`}
+ =`r round(z1,2)` 
+$$
+    
+So here is the equivalent shaded region for the standard normal curve:  
+    
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+std_normal_curve()
+std_normal_shade_area_between(z1,z2)
+std_normal_label_point(round(z1,2))
+std_normal_label_point(round(z2,2))
+```
+
+Now using the table we get the left tail area for the $z_2$ (the upper z) is:
+    
+$$
+\text{left tail area for } z_2 =`r area2_rounded` 
+$$
+
+Then using the table again we get left tail area for the $z_1$ (the lower z) is:
+
+$$
+\text{left tail area for } z_1 =`r area1_rounded` 
+$$
+
+So the area between is:
+
+$$
+\text{area between} =`r area2_rounded` - `r area1_rounded` = `r area_between` 
+$$
+
+Rounded to the nearest percent this is `r nearest_percent_between`%.

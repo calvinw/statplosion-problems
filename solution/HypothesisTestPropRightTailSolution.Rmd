@@ -1,0 +1,133 @@
+---
+pagetitle: "Hypothesis Testing - Proportions Right Tail Test"
+params:
+  count: 102
+  n: 250 
+  p: 0.34
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+p<-params$p
+q<-1-p
+count<-params$count
+n<-params$n 
+phat<-count/n
+stdev <- sqrt((1-p)*p/n)
+numer <- phat-p
+z <- round(numer/stdev,2)
+area <- round(pnorm(z),4)
+nearestPercent <- round(area*100)
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+```
+
+The claim about the population proportion involves $`r p`$.
+
+Here are the null and the alternative hypotheses:
+
+\begin{align}
+H_0:p &= `r p` \\
+H_a:p &> `r p` 
+\end{align}
+
+- The null hypothesis says **The population proportion is $`r p`$**
+- The alternative hypothesis says **The population proportion is more than 
+$`r p`$**
+
+Before we start we check the conditions of the Central Limit Theorem to make sure we can use a normal distribution here:
+
+$np=(`r n`)(`r p`)= `r n*p`$ and $n(1-p)=(`r n`)(`r q`)= `r n*q`$
+
+Since these are both at least $5$ we are in good shape.
+
+Now if the null hypothesis is true, the Central Limit Theorem says the sampling distribution of sample proportions would look like this:
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+normal_curve(p,round(stdev,4), show=FALSE, axis_label=bquote(hat(p)))
+```
+
+Next we look at our test statistic, which is just our sample proportion:
+
+$$
+\hat p = \frac{count}{n} = \frac{`r count`}{`r n`} = `r phat` 
+$$
+
+So we want to know how likely it is to get a sample proportion of `r phat` in this situation.  
+    
+In fact the **P-value is just this right tail area**
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+normal_curve(p,round(stdev,4), show=FALSE, axis_label=bquote(hat(p)))
+normal_shade_right_area(round(phat,4),p,round(stdev,4))
+normal_label_point(round(phat,4))
+```
+
+We want the shaded **_right tail area_** that is to the right of $\hat p = `r phat`$:
+
+We will find this area by changing the sample proportion $\hat p$ into a z-value and using the standard normal table. 
+
+First we need the calculation of the standard deviation since we need this in our z-value calculation:
+
+$$
+\small{
+stdev=\sqrt{\frac{(1-p)p}{n}} 
+ =\sqrt{\frac{(1-`r p`)`r p`}{`r n`}}
+ =\sqrt{\frac{(`r (1-p)`)`r p`}{`r n`}}
+ =\sqrt{\frac{`r (1-p)*p`}{`r n`}}
+ =`r stdev` 
+ }
+$$
+
+Now lets find the z-value using the sample proportion $\hat p= `r phat`$ the population proportion $p=`r p`$ and the standard deviation $stdev$ we just found:
+
+$$
+z=\frac{\hat p-p}{stdev}
+ =\frac{`r phat`-`r p`}{`r stdev`}
+ =\frac{`r numer`}{`r stdev`}
+ =`r z` 
+$$
+
+So here is the equivalent right tail area for of $z=`r z`$. 
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+std_normal_curve()
+std_normal_shade_right_area(z)
+std_normal_label_point(z)
+```
+
+This area is the same size as our original area so we just find this one using the standard normal distribution.
+
+We can find the right tail area for $z=`r z`$ by finding the left tail area and then subtracting that from 1.0.   
+    
+So lets look up the left tail area first. Go to the row that has `r u` and then to the column that contains `r h` and we see this: 
+
+```{r}
+make_highlighted_z_huxtable(z, 1)
+```
+
+So that means the left tail area we need in this situation is:
+
+$$
+\text{left tail area} =`r area` 
+$$
+
+This means that the right tail that we want to find is going to be this left tail subtracted from 1.0. 
+
+```{r echo=FALSE}
+right_area = 1.0 - area
+nearestPercent <- round(right_area*100)
+```
+
+$$
+P = \text{right tail area} = 1.0 - `r area` = `r round(right_area,4)` 
+$$
+
+
+So based on this our conclusion is that this is **`r hypothesis_test_conclusion(1.0-area)` against the null hypothesis**.    
+
+

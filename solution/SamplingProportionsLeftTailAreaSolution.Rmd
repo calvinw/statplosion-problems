@@ -1,0 +1,109 @@
+---
+pagetitle: "Sampling Proportions Left Tail Area"
+params:
+  count: 190 
+  n: 250 
+  p: 0.79
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+p<-params$p
+q<- 1-p
+count<-params$count
+n<-params$n 
+phat<-count/n
+stdev <- sqrt((1-p)*p/n)
+numer <- phat-p
+z <- round(numer/stdev,2)
+area <- round(pnorm(z),4)
+nearestPercent <- round(area*100)
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+```
+
+We have population proportion of $p=`r p`$ and sample proportion of $`r count`$ out of $`r n`$.
+
+We are interested in how likely it is we get our sample proportion or below.
+
+First let's calculate our sample proportion:   
+
+$$
+\hat p = \frac{count}{n} = \frac{`r count`}{`r n`} = `r phat`
+$$
+
+Before we start we check the conditions of the Central Limit Theorem to make sure we can use a normal distribution here:
+
+$np=(`r n`)(`r p`)= `r n*p`$ and $n(1-p)=(`r n`)(`r q`)= `r n*q`$
+
+Since these are both at least $5$ we are in good shape.
+
+Here is the $\hat p$-distribution showing the area that we want:    
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+normal_curve(p,round(stdev,4), show=FALSE, axis_label=bquote(hat(p)))
+normal_shade_left_area(round(phat,4),p,round(stdev,4))
+normal_label_point(round(phat,4))
+```
+
+Notice:
+
+- The sample proportion $\hat p=`r phat`$ is at the edge of the shaded region we want to find. 
+- The population proportion $p =`r p`$ is in the center.
+
+We want the shaded **_left tail area_** that is to the left of $\hat p = `r phat`$:
+
+We will find this area by changing the sample proportion $\hat p$ into a z-value and using the standard normal table. 
+
+First we need the calculation of the standard deviation since we need this in our z-value calculation:
+
+$$
+\small{
+stdev=\sqrt{\frac{(1-p)p}{n}} 
+ =\sqrt{\frac{(1-`r p`)`r p`}{`r n`}}
+ =\sqrt{\frac{(`r (1-p)`)`r p`}{`r n`}}
+ =\sqrt{\frac{`r (1-p)*p`}{`r n`}}
+ =`r stdev`
+ }
+$$
+
+Now lets find the z-value using the sample proportion $\hat p= `r phat`$ the population proportion $p=`r p`$ and the standard deviation $stdev$ we just found:
+
+$$
+z=\frac{\hat p-p}{stdev}
+ =\frac{`r phat`-`r p`}{`r stdev`}
+ =\frac{`r numer`}{`r stdev`}
+ =`r z`
+$$
+
+So here is the equivalent left tail area for of $z=`r z`$. 
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+std_normal_curve()
+std_normal_shade_left_area(z)
+std_normal_label_point(z)
+```
+
+This area is the same size as our original area so we just find this one using the standard normal distribution.
+
+We can look up the area in the standard normal z-table using $z=`r z`$  
+    
+We go to the row that has `r u` and then to the column that contains `r h` and we see this: 
+
+```{r}
+make_highlighted_z_huxtable(z, 1)
+```
+
+So that means:
+
+$$
+\text{left tail area} =`r area`
+$$
+
+Rounded to the nearest percent this is `r nearestPercent`%. This means that the **shaded area corresponds to `r nearestPercent`%** of the entire data.
+
+This means there is a `r nearestPercent`% chance of getting a sample proportion of $\hat p=`r phat`$ or less for this population when using samples of size $n = `r n`$.

@@ -1,0 +1,67 @@
+---
+pagetitle: "Confidence Interval for Means"
+params:
+  xbar: 12.4 
+  s: 5.1 
+  n: 38 
+  confidence: 0.99
+---
+
+```{r}
+xbar<-params$xbar
+s<-params$s
+n<-params$n
+confidence<-params$confidence
+```
+
+```{r include=FALSE}
+tstar <- qt(confidence + (1.0-confidence)/2.0,df=n-1) 
+E <- tstar*s/sqrt(n)
+xbarMinusE <- xbar - E
+xbarPlusE <- xbar + E
+```
+
+First we will calculate the $t^\star$ involved, using the confidence level `r confidence*100`%. 
+
+In a spreadsheet we do the following:
+
+**=TINV(1.0-confidence, n-1)**
+
+Since $n=`r n`$, in this case this will look like this:
+
+**=TINV(`r 1.0-confidence`, `r n-1`)**
+
+If we do this we get 
+
+$$
+t^\star = `r tstar`
+$$
+
+We now plug into the formula for E using the sample standard deviation, the sample size and the $t^\star$:
+
+$$
+E=(t^\star)\frac{s}{\sqrt{n}} 
+ =(`r tstar`)\frac{`r s`}{`r sqrt(n)`}
+ = `r E` 
+$$
+
+Then we find the two endpoints.    
+   
+The left one is this:
+
+$$
+\bar x - E = `r xbar`-`r E` = `r xbarMinusE` 
+$$
+
+The right one is this:
+
+$$
+\bar x + E = `r xbar`+`r E` = `r xbarPlusE` 
+$$
+
+So the confidence interval for this sample mean is: 
+
+$$
+(`r round(xbarMinusE,2)`,`r round(xbarPlusE,2)`) 
+$$
+

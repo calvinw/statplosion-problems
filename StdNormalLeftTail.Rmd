@@ -1,0 +1,13 @@
+---
+pagetitle: "Std Normal Left Tail Problem"
+params:
+  z: -0.80 
+---
+
+```{r child="question/StdNormalLeftTailQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/StdNormalLeftTailSolution.Rmd"}
+```

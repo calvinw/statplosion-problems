@@ -1,0 +1,13 @@
+---
+pagetitle: "Std Normal Left Tail Spreadsheet Problem"
+params:
+  z: 1.23 
+---
+
+```{r child="question/StdNormalLeftTailSpreadsheetQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/StdNormalLeftTailSpreadsheetSolution.Rmd"}
+```

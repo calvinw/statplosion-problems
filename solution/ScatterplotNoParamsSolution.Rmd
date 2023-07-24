@@ -1,0 +1,24 @@
+
+## Scatterplot  
+
+```{r, echo=F}
+n <- 20 
+cap <- paste0("A scatterplot with n=", n, " random points")
+main <- paste0("Scatterplot of ", n, " points")
+```
+
+Here is a scatterplot with \(n=`r n`\) random points.   
+
+\[ z=23 \]
+
+- Below is the **scatterplot**
+- It is great!!!! 
+- Below is the **scatterplot**
+- It is great!!!! 
+
+
+```{r fig.height=4, fig.width=4, fig.align='center', echo=F}
+x <- sample(0:20, n, replace=TRUE)
+y <- sample(0:20, n, replace=TRUE)
+plot(x, y, main=main, pch=19)
+```

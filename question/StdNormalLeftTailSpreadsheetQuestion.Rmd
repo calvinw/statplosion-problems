@@ -1,0 +1,11 @@
+---
+pagetitle: "Std Normal Left Tail Spreadsheet Question"
+params:
+  z: 1.23 
+---
+
+```{r}
+z<-params$z
+```
+
+Find the left tail area when $z=`r z`$ using a spreadsheet calculation.

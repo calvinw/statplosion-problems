@@ -1,0 +1,16 @@
+---
+pagetitle: "Sampling Means Right Tail Area Problem"
+params:
+  mu: 190 
+  sigma: 50 
+  xbar: 180 
+  n: 35 
+---
+
+```{r child="question/SamplingMeansRightTailAreaQuestion.Rmd"}
+```
+
+**_Solution:_**
+
+```{r child="solution/SamplingMeansRightTailAreaSolution.Rmd"}
+```

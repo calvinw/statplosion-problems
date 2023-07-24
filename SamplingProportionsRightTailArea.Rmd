@@ -1,0 +1,15 @@
+---
+pagetitle: "Sampling Proportions Right Tail Area Problem"
+params:
+  count: 190 
+  n: 250 
+  p: 0.79
+---
+
+```{r child="question/SamplingProportionsRightTailAreaQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/SamplingProportionsRightTailAreaSolution.Rmd"}
+```

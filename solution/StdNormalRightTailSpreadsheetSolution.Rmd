@@ -1,0 +1,59 @@
+---
+pagetitle: "Std Normal Right Tail Area Spreadshet"
+params:
+  z: -1.34 
+---
+
+```{r, include=F}
+library("statplosion")
+z<-params$z; 
+```
+```{r echo=FALSE}
+left_tail_area <- pnorm(z)
+left_tail_area_table <- round(left_tail_area,4)
+
+right_tail_area <- 1.0 - left_tail_area_table
+nearestPercent <- round(right_tail_area*100)
+```
+We have $z = `r z`$. 
+
+Here is the picture of the area we want.  
+
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+std_normal_curve()
+std_normal_shade_right_area(z)
+std_normal_label_point(z)
+```
+
+We want the shaded region to the right of $z=`r z`$. 
+
+We will calculate this area using a spreadsheet and the **NORMSDIST** function but because **NORMSDIST** finds left tails we have to use a trick. We actually will find the left tail area for this z-value, then subtract from 1.0 to get our right tail area. 
+
+- Type **z** in cell **B2** 
+- Then type $`r z`$ into **C2**
+
+```{r}
+spread<-create_hux_spreadsheet(4,4)
+spread<-set_hux_spreadsheet_val(spread, "z", col="B", row=2) 
+spread<-set_hux_spreadsheet_val(spread, z, col="C", row=2) 
+spread
+```
+    
+- Then type in **right tail area** in **B3**, 
+- In cell **C3** type **=1.0-NORMSDIST(** then click on **C2** and then type **)** then hit enter
+    
+```{r}
+spread<-set_hux_spreadsheet_val(spread, "right tail area", col="B", row=3) 
+spread<-set_hux_spreadsheet_val(spread, "=1.0-NORMSDIST(C2)", col="C", row=3) 
+spread
+```
+After hitting enter you should see the result as follows:
+
+```{r}
+spread<-set_hux_spreadsheet_val(spread, right_tail_area, col="C", row=3) 
+spread
+```
+
+Rounded to the nearest percent this is **`r nearestPercent`%**.
+
+This means that the right tail area for $z=`r z`$ is **`r nearestPercent`%**.

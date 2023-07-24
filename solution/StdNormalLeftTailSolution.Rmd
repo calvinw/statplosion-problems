@@ -1,0 +1,46 @@
+---
+pagetitle: "Std Normal Left Tail Area"
+params:
+  z: 1.23
+---
+
+```{r}
+library("statplosion")
+z<-params$z; 
+```
+
+```{r echo=FALSE}
+area <- pnorm(z)
+nearestPercent <- round(area*100)
+area <- round(area,4)
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+```
+We have $z = `r z`$. 
+
+Here is the picture of the area we want.  
+
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+std_normal_curve()
+std_normal_shade_left_area(z)
+std_normal_label_point(z)
+```
+
+We want the shaded region to the left of $z=`r z`$
+
+If we look up the area in the standard normal z-table using  $z=`r z`$ we go to the row that has `r u` and then to the column that contains `r h` and we see this: 
+
+```{r}
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+make_highlighted_z_huxtable(z, 1)
+```
+So that means:
+
+$$
+\text{left tail area} =`r area` 
+$$
+
+Rounded to the nearest percent this is `r nearestPercent`%. This means that the shaded area corresponds to `r nearestPercent`% of the entire data.

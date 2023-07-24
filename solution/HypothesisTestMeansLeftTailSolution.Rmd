@@ -1,0 +1,78 @@
+---
+pagetitle: "Hypothesis Testing - Means Left Tail Test"
+params:
+  xbar: 98
+  n: 15 
+  mu: 110 
+  s: 20 
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+mu<-params$mu
+xbar<-params$xbar
+n<-params$n 
+s<-params$s
+stderr<-s/sqrt(n)
+numer <- xbar-mu
+t <- round(numer/stderr,2)
+area <- round(pt(t, n-1),4)
+nearestPercent <- round(area*100)
+parts <- extract_tenths_and_hundredths(t)
+u <- parts[1]
+h <- parts[2]
+```
+We have $\bar x = `r xbar`$, $s = `r s`$ and $n=`r n`$. 
+
+The claim about the population mean involves $`r mu`$.
+
+Here are the null and the alternative hypotheses:
+
+\begin{align}
+H_0:\mu &= `r mu` \\
+H_a:\mu &< `r mu` 
+\end{align}
+
+- The null hypothesis says **The population mean is $`r mu`$**
+- The alternative hypothesis says **The population mean is less than 
+$`r mu`$**
+
+We want to know how likely it is to get a sample mean of `r xbar` in this situation.  
+    
+We will estimate this by finding a t-value for the sample mean $\bar x$ and then using the t-distribution to find the left tail area.   
+
+We have to use a t-value and the t-distribution because we do not have the population standard deviation ($\sigma$) in this case and only have a sample standard deviation $s$.  
+
+We find the t-value using the sample mean $\bar x= `r xbar`$, the population mean $\mu=`r mu`$, and the sample standard deviation $s = `r s`$:
+
+$$
+t=\frac{\bar x-\mu}{\frac{s}{\sqrt{n}}}
+ =\frac{`r xbar`-`r mu`}{\frac{`r s`}{\sqrt{`r n`}}}
+ =\frac{`r numer`}{`r stderr`}
+ =`r t` 
+$$
+
+Now you can compute the left tail area which is our p-value in a spreadsheet using the TDIST function:
+
+**=TDIST(ABS(t), n-1, 1)**
+
+We put in $t=`r t`$ and $n=`r n`$:
+
+**=TDIST(ABS(`r t`), `r n`-1, 1)**
+
+or 
+
+**=TDIST(`r abs(t)`, `r n-1`, 1)**
+
+We get $`r area`$ as a result and this is our P-value: 
+
+$$
+P = \text{left tail area} =`r area` 
+$$
+
+So based on this our conclusion is that this is **`r hypothesis_test_conclusion(area)` against the null hypothesis**.
+
+

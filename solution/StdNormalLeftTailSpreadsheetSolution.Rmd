@@ -1,0 +1,73 @@
+---
+pagetitle: "Std Normal Left Tail Area Spreadsheet"
+params:
+  z: 1.23
+---
+
+```{r, include=F, echo=F}
+knitr::opts_chunk$set(echo = FALSE)
+library("statplosion")
+z<-params$z
+```
+
+```{r}
+area <- pnorm(z)
+nearestPercent <- round(area*100)
+area <- round(area,4)
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+```
+We have $z = `r z`$. 
+
+Here is the picture of the area we want.  
+
+```{r}
+#| fig-height: 3
+#| fig-width: 5 
+#| fig-cap: "This is the left tail area we want."
+#| fig-cap-postion: margin 
+std_normal_curve()
+std_normal_shade_left_area(z)
+std_normal_label_point(z)
+```
+
+We want the shaded region to the left of $z=`r z`$. We will calculate this area using a spreadsheet and the **NORMSDIST** function which gives left tail areas for z-values. 
+
+- Type **z** in cell **B2** 
+- Then type $`r z`$ into **C2**
+
+::: {style="width:50%;margin:auto"}
+```{r}
+#| tbl-cap: Enter the z-value 
+spread<-create_hux_spreadsheet(4,4)
+spread<-set_hux_spreadsheet_val(spread, "z", col="B", row=2) 
+spread<-set_hux_spreadsheet_val(spread, z, col="C", row=2) 
+spread
+```
+:::
+    
+- Then type in **left tail area** in **B3**, 
+- In cell **C3** type **=NORMSDIST(** then click on **C2** then type **)** then hit enter 
+    
+::: {style="width:50%;margin:auto"}
+```{r}
+#| tbl-cap: Enter the NORMSDIST formula
+spread<-set_hux_spreadsheet_val(spread, "left tail area", col="B", row=3) 
+spread<-set_hux_spreadsheet_val(spread, "=NORMSDIST(C2)", col="C", row=3) 
+spread
+```
+:::
+
+::: {style="width:50%;margin:auto"}
+
+```{r}
+#| tbl-cap: After entering you should see the result
+spread<-set_hux_spreadsheet_val(spread, area, col="C", row=3) 
+spread
+```
+:::
+
+Rounded to the nearest percent this is **`r nearestPercent`%**.
+
+This means that the left tail area for $z=`r z`$ is **`r nearestPercent`%**.

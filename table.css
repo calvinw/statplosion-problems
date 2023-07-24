@@ -1,0 +1,20 @@
+table.table {
+    width: auto !important;
+}
+table {
+      width: auto !important;
+	  margin: auto !important;
+	  border-top: 3px solid #666 !important;
+	  border-bottom: 3px solid #666 !important;
+	  margin-bottom: 20px !important;
+}
+table thead th { 
+border-bottom: 3px solid #ddd !important; 
+}
+th, td { 
+   	width: auto !important;
+	border: 1px solid #666 !important;
+	padding: 5px !important; 
+	height: 30px !important;
+	min-width: 50px !important;
+}

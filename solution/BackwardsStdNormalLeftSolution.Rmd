@@ -1,0 +1,58 @@
+---
+pagetitle: "Backwards Std Normal Left Tail Area"
+params:
+  area: 0.10
+---
+
+```{r}
+library("statplosion")
+area<-params$area; 
+```
+
+```{r echo=FALSE}
+z <- qnorm(area)
+z_rounded <-round(z,2) 
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+```
+We want to find the z-value for a given left tail area of $`r 100*area`\%$. 
+
+This is an example of a **backwards** problem, since we are going from an **area to a z-value**.
+
+Here is what the picture looks like: 
+    
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+std_normal_curve()
+std_normal_shade_left_area(z)
+std_normal_label_point(z, label="z=?")
+```
+     
+The shaded left tail area corresponds to **`r 100*area`%** of the data.  We use the standard normal table to find the z-value that goes with this left tail.   
+
+We look through the table and **_look for the area that is closest_** to the value **`r 100*area`%** which we need.    
+    
+We might not find this value exactly but we locate the closest value that we can:
+
+```{r}
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+make_highlighted_z_huxtable(z, 1)
+```
+So that means we can take:
+
+$$
+z =`r z_rounded` 
+$$
+
+as our solution. That is the z-value that we need. 
+
+Here is the picture then:
+
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+std_normal_curve()
+std_normal_shade_left_area(z_rounded)
+std_normal_label_point(z_rounded)
+```
+

@@ -1,0 +1,11 @@
+---
+pagetitle: "Std Normal Right Tail Question"
+params:
+  z: 1.23 
+---
+
+```{r}
+z<-params$z
+```
+
+Find the right tail area when $z=`r z`$.

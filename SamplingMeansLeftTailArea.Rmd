@@ -1,0 +1,16 @@
+---
+pagetitle: "Sampling Means Left Tail Problem"
+params:
+  mu: 190 
+  sigma: 50 
+  xbar: 180 
+  n: 35 
+---
+
+```{r child="question/SamplingMeansLeftTailAreaQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/SamplingMeansLeftTailAreaSolution.Rmd"}
+```

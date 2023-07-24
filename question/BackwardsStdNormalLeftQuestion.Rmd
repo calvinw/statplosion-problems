@@ -1,0 +1,11 @@
+---
+pagetitle: "Backwards Std Normal Left Tail Area Question"
+params:
+  area: 0.10
+---
+
+```{r}
+area<-params$area; 
+```
+
+Find the z-value that gives a left tail area of $`r 100*area`\%$.

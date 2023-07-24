@@ -1,0 +1,17 @@
+---
+pagetitle: "Confidence Interval for Proportions Question"
+params:
+  count: 201 
+  n: 518
+  confidence: 0.95
+---
+
+```{r}
+count<-params$count
+n<-params$n
+confidence<-params$confidence
+```
+
+Suppose we have a sample proportion of $`r count`$ out of $`r n`$. Find a 
+$`r 100*confidence`\%$ confidence interval for this sample proportion.
+

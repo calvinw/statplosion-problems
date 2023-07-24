@@ -1,0 +1,18 @@
+---
+pagetitle: "Responsive Table"
+---
+```{r}
+library("statplosion")
+```
+
+Here is a z table for negative z-values
+
+```{r, eval=TRUE}
+make_full_ztable("negative")
+```
+
+Here is a z table for positive z-values
+
+```{r, eval=TRUE}
+make_full_ztable("positive")
+```

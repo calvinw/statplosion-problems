@@ -1,0 +1,36 @@
+---
+pagetitle: "Regression Slope Intercept Question"
+params:
+  xname: "x"
+  yname: "y"
+  x: "16,18,20,13"
+  y: "53,56,58,63"
+  predicters: "17,14" 
+  xlim: "13,22"
+  ylim: "40,80"
+---
+
+```{r}
+library("statplosion")
+names = c(params$xname,params$yname)
+x<-parselist(params$x)
+y<-parselist(params$y)
+predicters<-parselist(params$predicters)
+xlim<-parselist(params$xlim)
+ylim<-parselist(params$ylim)
+```
+
+Find the regression line for the following data using SLOPE and INTERCEPT in a spreadsheet.
+
+```{r}
+data_df<-data.frame(list(x, y)) 
+colnames(data_df)<-names
+hux_df<-create_hux_datatable(data_df)
+hux_df
+```
+
+```{r}
+xEquals <- paste0("$", names[1],"=",predicters, "$")
+predictersList <- paste(xEquals, collapse=" and ")
+```
+Also make predictions for `r predictersList`.

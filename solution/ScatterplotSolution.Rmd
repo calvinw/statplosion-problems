@@ -1,0 +1,18 @@
+---
+pagetitle: "Scatterplot"
+params:
+  n: 30 
+---
+
+```{r}
+n <- params$n
+```
+
+This problem picks $n=`r n`$ random points on $[0,20]$ and plots a scatterplot for them.   
+
+```{r fig.height=4, fig.width=4, fig.align='center'}
+x <- sample(0:20, n, replace=TRUE)
+y <- sample(0:20, n, replace=TRUE)
+main <- paste0("Scatterplot of ", n, " points")
+plot(x, y, main=main, pch=19)
+```

@@ -1,0 +1,74 @@
+---
+pagetitle: "Confidence Interval for Proportions"
+params:
+  count: 201 
+  n: 518
+  confidence: 0.95
+---
+
+```{r}
+count<-params$count
+n<-params$n
+phat<-count/n
+qhat<- 1-phat
+confidence<-params$confidence
+```
+
+```{r include=FALSE}
+zstar <- round(-1*qnorm((1.0-confidence)/2.0),3) 
+E <- round(zstar*sqrt((1-phat)*phat/n ),3)
+phatMinusE <- phat - E
+phatPlusE <- phat + E
+leftEndPtPercent <- round(100*phatMinusE)
+rightEndPtPercent <- round(100*phatPlusE)
+```
+
+The sample proportion is $`r count`$ out of $`r n`$:
+
+$$
+\hat p = \frac{count}{n} = \frac{`r count`}{`r n`} = `r phat` 
+$$
+
+Before we start we check the conditions showing we can use z-values from a standard normal distribution here: $n(\hat p)=(`r n`)(`r phat`)= `r n*phat`$ and $n(1-\hat p)=(`r n`)(`r qhat`)= `r n*qhat`$
+
+Since these are both at least $5$ we are in good shape.
+
+Next we will calculate the $E$ involved, using the confidence level `r confidence*100`%. 
+
+For this confidence level we can look up that the appropriate critical value $z^\star$ to use. In this case it is $z^\star = `r zstar`$.
+
+We plug the sample proportion $\hat p=`r phat`$ and the sample size $n=`r n`$ and the $z^\star$ into our formula for $E$:
+
+$$
+E=(z^\star)\sqrt{\frac{(1-\hat p)(\hat p)}{n}} 
+ =(`r zstar`)\sqrt{\frac{(1-`r phat`)(`r phat`)}{`r n`}}
+ = `r E` 
+$$
+
+Then we find the two endpoints.    
+   
+The left one is this:
+
+$$
+\hat p - E = `r phat`-`r E` = `r phatMinusE` 
+$$
+
+The right one is this:
+
+$$
+\hat p + E = `r phat`+`r E` = `r phatPlusE` 
+$$
+
+So the confidence interval for the sample proportion is 
+
+$$
+(`r phatMinusE`,`r phatPlusE`) 
+$$
+
+If we wanted this rounded to the nearest percent we would use:
+
+$$
+(`r leftEndPtPercent` \% ,`r rightEndPtPercent` \%) 
+$$
+
+We could say the confidence interval is from $`r leftEndPtPercent` \%$ to  $`r rightEndPtPercent` \%$.

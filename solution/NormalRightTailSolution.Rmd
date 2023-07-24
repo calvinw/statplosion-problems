@@ -1,0 +1,88 @@
+---
+pagetitle: "Normal Right Tail Area"
+params:
+  mu: 2.3
+  sigma: 3.4 
+  x: -1.3 
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+mu<-params$mu; 
+sigma<-params$sigma; 
+x<-params$x; 
+numer<-(x-mu); 
+```
+
+```{r echo=FALSE}
+z <- round((x-mu)/sigma,2) 
+area <- pnorm(z)
+area <- round(area,4)
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+```
+We have $\mu=`r mu`$, $\sigma=`r sigma`$, and $x = `r x`$:
+
+Here is the picture of the area that we want.    
+    
+We want the shaded **_right tail area_** which is below the curve and to the right of $x = `r x`$:
+     
+```{r fig.height=2, fig.width=3, fig.align="center"}
+normal_curve(mu,sigma)
+normal_shade_right_area(x,mu,sigma)
+normal_label_point(x)
+```
+
+We will find this area by computing z-value for the given x-value and finding the right tail area for that z-value using the standard normal curve.
+
+Lets find the z-value for the x-value `r x` at edge of the shaded region:
+
+$$
+z=\frac{x-\mu}{\sigma}
+ =\frac{`r x`-`r mu`}{`r sigma`}
+ =\frac{`r numer`}{`r sigma`}
+ =`r z` 
+$$
+
+So here is the equivalent right tail area when $z=`r z`$. 
+
+```{r fig.height=2, fig.width=3, fig.align="center"}
+std_normal_curve()
+std_normal_shade_right_area(z)
+std_normal_label_point(z)
+```
+This area is the same size as our original area so we just find this one using the standard normal distribution.     
+    
+We can find the right tail area for $z=`r z`$ by finding the left tail area and then subtracting that from 1.0.   
+    
+So lets look up the left tail area first. Go to the row that has `r u` and then to the column that contains `r h` and we see this: 
+
+```{r}
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+make_highlighted_z_huxtable(z, 1)
+```
+
+So that means:
+
+$$
+\text{left tail area} =`r area` 
+$$
+
+This means that the right tail that we want to find is going to be this left tail subtracted from 1.0. 
+
+```{r echo=FALSE}
+right_area = 1.0 - area
+nearestPercent <- round(right_area*100)
+```
+
+$$
+\text{right tail area} = 1.0 - `r area` = `r round(right_area,4)` 
+$$
+
+Rounded to the nearest percent this is `r nearestPercent`%.

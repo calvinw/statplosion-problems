@@ -1,0 +1,11 @@
+---
+pagetitle: "Z Table Lookup Question"
+params:
+  z: -1.09
+---
+
+```{r}
+z<-params$z
+```
+
+Find the left tail area when $z=`r z`$. Use the standard normal table.

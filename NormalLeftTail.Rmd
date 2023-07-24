@@ -1,0 +1,15 @@
+---
+pagetitle: "Normal Left Tail Area Problem"
+params:
+  mu: 30 
+  sigma: 4 
+  x: 25 
+---
+
+```{r child="question/NormalLeftTailQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/NormalLeftTailSolution.Rmd"}
+```

@@ -1,0 +1,17 @@
+---
+pagetitle: "Sampling Means Left Tail Area Question"
+params:
+  mu: 190 
+  sigma: 50 
+  xbar: 180 
+  n: 35 
+---
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+n<-params$n 
+xbar<-params$xbar
+```
+
+Suppose that a normal distribution has a mean of $`r mu`$ and a standard deviation of $`r sigma`$. If we take samples of size $`r n`$ from this distribution what is the chance that $\bar x$ will be $`r xbar`$ or less?

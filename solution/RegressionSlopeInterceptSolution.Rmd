@@ -1,0 +1,208 @@
+---
+pagetitle: "Regression Slope Intercept"
+params:
+  xname: "x"
+  yname: "y"
+  x: "16,18,20,13"
+  y: "53,56,58,63"
+  predicters: "17,14" 
+  xlim: "13,22"
+  ylim: "40,80"
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+names = c(params$xname,params$yname)
+x<-parselist(params$x)
+y<-parselist(params$y)
+predicters<-parselist(params$predicters)
+xlim<-parselist(params$xlim)
+ylim<-parselist(params$ylim)
+n <- length(x)
+model <- lm(y~x)
+m <- unname(model$coefficients[2])
+b <- unname(model$coefficients[1])
+```
+
+```{r}
+make_prediction_cell_formulas<- function(spread, predicters, prediction_row) {
+
+    numPredicters<-length(predicters)
+    for (i in 1:numPredicters) {
+        rownum<-prediction_row+i-1
+        spread<-set_hux_spreadsheet_val(spread, predicters[i], col="A", row=rownum)
+        prediction_cell <- paste0("A", rownum)
+        prediction_formula<- paste0("=$E$2*", prediction_cell,"+$E$3") 
+        spread<-set_hux_spreadsheet_val(spread, prediction_formula , col="C", row=rownum)
+    }
+    return (spread)
+} 
+
+make_prediction_cell_values<- function(spread, predictions, prediction_row) {
+
+    numPredictions<-length(predictions)
+
+    for (i in 1:numPredictions) {
+        rownum<-prediction_row+i-1
+        spread<-set_hux_spreadsheet_val(spread, round(predictions[i],3), col="C", row=rownum)
+    }
+    return (spread)
+} 
+```
+
+
+#### The Data    
+    
+Here is the data:   
+
+```{r}
+data_df<-data.frame(list(x, y)) 
+colnames(data_df)<-names
+
+hux_df<-create_hux_datatable(data_df)
+hux_df
+```
+
+The goal here will be to predict the y-value (called $`r names[2]`$) from the x-value (called $`r names[1]`$) by using the regression line. 
+
+We will get the slope $m$ and the intercept $b$ of the regression line by using the **SLOPE** and **INTERCEPT** functions in a spreadsheet.
+
+#### Scatterplot   
+
+First lets see a scatterplot of the data:
+
+```{r fig.height=4, fig.width=5, fig.align="center"}
+
+title<-paste0("Scatterplot of ", names[2]," vs ", names[1])
+
+plot(data_df, pch=19, 
+     xlim=xlim, ylim=ylim,
+     col="blue",
+     main=title)
+```
+
+#### Spreadsheet
+
+So start by copying the data into your spreadsheet in columns A and B:   
+    
+```{r}
+nrows<- length(x) + length(predicters) + 2 
+spread<-create_hux_spreadsheet(nrows,6)
+mtrx <-matrix(c(names[1],x,names[2],y), nrow = n+1, byrow=F)
+spread <- paste_hux_subspreadsheet(spread, mtrx, col="A", row=1) 
+spread
+```
+
+#### Finding Slope and Intercept of Regression Line 
+
+Next lets compute the slope and intercept using the functions SLOPE and INTERCEPT in a spreadsheet. 
+
+```{r}
+yrange<-paste0("B2:B", n+1)
+xrange<-paste0("A2:A", n+1)
+
+mFormula <-paste0("=SLOPE(", yrange, ",", xrange, ")")
+bFormula <-paste0("=INTERCEPT(", yrange, ",", xrange, ")")
+```
+
+Make sure you enter the y cell range **`r yrange`** in first and then the x cell range **`r xrange`** when you are using SLOPE and INTERCEPT formula. (Regression formulas take y-ranges first!)
+
+```{r}
+spread<-set_hux_spreadsheet_val(spread, "m", "D", 2)
+spread<-set_hux_spreadsheet_val(spread, "b", "D", 3)
+spread<-set_hux_spreadsheet_val(spread,  mFormula, "E", 2)
+spread<-set_hux_spreadsheet_val(spread,  bFormula, "E", 3)
+
+spread
+```
+
+Here are the values after using the formulas:
+
+```{r}
+
+spread<-set_hux_spreadsheet_val(spread, "m", "D", 2)
+spread<-set_hux_spreadsheet_val(spread, "b", "D", 3)
+spread<-set_hux_spreadsheet_val(spread,  round(m,3), "E", 2)
+spread<-set_hux_spreadsheet_val(spread,  round(b,3), "E", 3)
+
+spread
+```
+
+From this we see that the regression equation is given below:  
+     
+$$ 
+`r names[2]`=`r round(m,3)`(`r names[1]`)+`r round(b,3)`
+$$
+
+
+#### Predictions
+
+Next we will make some predictions using the regression equation above. 
+
+We want to make predictions for $`r names[2]`$ (the y-value) from the $`r names[1]`$ (the x-value):    
+
+```{r}
+predictionQuestionMarks<-rep("?", length(predicters))
+predicters_data_df<-data.frame(list(predicters, predictionQuestionMarks)) 
+colnames(predicters_data_df)<-names
+hux_predicters_data_df<-create_hux_datatable(predicters_data_df)
+hux_predicters_data_df
+```
+
+So first we set up a column of the spreadsheet to hold our predictions. We call this column **predictions**. 
+
+Then we put the x-values that we will make predictions for in column **A**. 
+
+Then in column **C** fill in the predictions using the formula for the regression line. 
+
+We use the entries for the slope and the intercept that we found above:
+
+```{r}
+
+predictions_row <- length(x)+2
+spread<-set_hux_spreadsheet_val(spread, "predictions", col="C", row=1)
+spread<-make_prediction_cell_formulas(spread, predicters, predictions_row)
+spread
+```
+
+Here you should use absolute references for the slope and intercept since if you create your predictions by dragging you do not want the formula to update out of the cells where the m and b are. 
+
+Finally here are the predictions:
+
+```{r}
+predictions_df<- data.frame(x=predicters)
+predictions<-predict(model, predictions_df)
+spread<-make_prediction_cell_values(spread, predictions, predictions_row)
+spread
+```
+
+#### A Plot of the Predictions 
+
+Below we show the regression line
+
+$$ 
+`r names[2]`=`r round(m,3)`(`r names[1]`)+`r round(b,3)`
+$$
+
+and the predictions
+
+```{r fig.height=4, fig.width=5, fig.align="center"}
+plot(data_df, 
+     xlim=xlim, ylim=ylim, 
+     col="blue", pch=19)
+points(x=predicters,y=predictions, col="red", pch=19)
+abline(model, col="blue")
+```
+
+The predictions were made by plugging in the x-values into the equation for the line. Here are the details of one of the calculations so you can see what the spreadsheet is doing:
+
+For $`r names[1]`=`r predicters[1]`$:
+
+$$
+`r names[2]`=`r round(m,3)`(`r predicters[1]`)+`r round(b,3)`=`r round(m,3)*predicters[1] + round(b,3)`
+$$
+
+So that point is at $(`r predicters[1]`,`r round(m,3)*predicters[1] + round(b,3)`)$ on the line.

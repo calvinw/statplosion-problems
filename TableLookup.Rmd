@@ -1,0 +1,13 @@
+---
+pagetitle: "Z Table Lookup Problem"
+params:
+  z: -1.09
+---
+
+```{r child="question/TableLookupQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/TableLookupSolution.Rmd"}
+```

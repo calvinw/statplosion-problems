@@ -1,0 +1,19 @@
+---
+pagetitle: "Regression Slope Intercept Problem"
+params:
+  xname: "x"
+  yname: "y"
+  x: "16,18,20,13"
+  y: "53,56,58,63"
+  predicters: "17,14" 
+  xlim: "13,22"
+  ylim: "40,80"
+---
+
+```{r child="question/RegressionSlopeInterceptQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/RegressionSlopeInterceptSolution.Rmd"}
+```

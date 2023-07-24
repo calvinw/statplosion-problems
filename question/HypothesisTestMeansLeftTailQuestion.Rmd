@@ -1,0 +1,17 @@
+---
+pagetitle: "Hypothesis Testing - Means Left Tail Test Question"
+params:
+  xbar: 98
+  n: 15 
+  mu: 110 
+  s: 20 
+---
+
+```{r}
+mu<-params$mu
+xbar<-params$xbar
+n<-params$n 
+s<-params$s
+```
+
+Suppose that we wish to test if a population mean is less than $`r mu`$. We take a sample of size $n=`r n`$ and get $\bar x=`r xbar`$. Suppose that the sample standard deviation is $s=`r s`$.

@@ -1,0 +1,15 @@
+---
+pagetitle: "Solve Backwards Left Tail Question"
+params:
+  mu: 18 
+  sigma: 3 
+  area: .25
+---
+
+```{r}
+area<-params$area; 
+mu<-params$mu; 
+sigma<-params$sigma; 
+```
+
+Suppose that a normal distribution has mean $`r mu`$ and standard deviation $`r sigma`$. Find the x-value that represents a left tail area of $`r 100*area`\%$.

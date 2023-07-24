@@ -1,0 +1,17 @@
+---
+pagetitle: "Normal Area Between Question"
+params:
+  mu: 23
+  sigma: 8 
+  x1: 10
+  x2: 25
+---
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+x1<-params$x1
+x2<-params$x2
+```
+
+Suppose that a normal distribution has mean $`r mu`$ and standard deviation $`r sigma`$. Find the area between $`r x1`$ and $`r x2`$

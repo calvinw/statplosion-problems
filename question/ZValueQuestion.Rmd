@@ -1,0 +1,15 @@
+---
+pagetitle: "Z Value Question"
+params:
+  mu: 23
+  sigma: 4
+  x: 22.2
+---
+
+```{r}
+x<-params$x; 
+mu<-params$mu; 
+sigma<-params$sigma; 
+```
+
+Suppose that $x=`r x`$ for a distribution with mean $`r mu`$, standard deviation $`r sigma`$, find the z-value for the given $x$.

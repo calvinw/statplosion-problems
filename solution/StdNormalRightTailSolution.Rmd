@@ -1,0 +1,56 @@
+---
+pagetitle: "Std Normal Right Tail"
+params:
+  z: 1.05 
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+z<-params$z; 
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+```
+Here is the picture of the area we want. This area is called a "right tail area":
+
+```{r fig.height=2, fig.width=3.5, fig.align="center"}
+std_normal_curve()
+std_normal_shade_right_area(z)
+std_normal_label_point(z)
+```
+
+We want the shaded region to the right of $z=`r z`$ and underneath the standard normal curve.
+
+```{r echo=FALSE}
+left_tail_area <- pnorm(z)
+left_tail_area_table <- round(left_tail_area,4)
+
+right_tail_area <- 1.0 - left_tail_area_table
+nearestPercent <- round(right_tail_area*100)
+```
+
+Since the standard normal table only has "left tail" areas in it, we cannot look up the area we want directly. But if we look up the left tail area in the z-table for $z=`r z`$, we can then subtract that from 1.0 to get the area that we want. 
+
+Now to find the left tail area we need using standard normal z-table using  $z=`r z`$ we go to the row that has `r u` and then to the column that contains `r h` and we see this: 
+
+```{r}
+parts <- extract_tenths_and_hundredths(z)
+u <- parts[1]
+h <- parts[2]
+make_highlighted_z_huxtable(z, 1)
+```
+
+So the left tail area is `r left_tail_area_table`. We use this to find the right tail area now:
+
+$$
+\text{right tail area}=1.0 - \text{left tail area} =1.0 - `r left_tail_area_table` = `r right_tail_area` 
+$$
+
+Rounded to the nearest percent this right tail area is `r nearestPercent`%. 
+
+This means that the shaded area corresponds to `r nearestPercent`% of the entire data. 
+
+Another way to say it is that `r nearestPercent`% of the data falls to the right of $z=`r z`$. 

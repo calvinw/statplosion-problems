@@ -1,0 +1,13 @@
+---
+pagetitle: "Backwards Std Normal Right Tail Area Problem"
+params:
+  area: 0.10
+---
+
+```{r child="question/BackwardsStdNormalRightQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/BackwardsStdNormalRightSolution.Rmd"}
+```

@@ -1,0 +1,141 @@
+---
+pagetitle: "Regression Tookpak"
+params:
+  xname: "x"
+  yname: "y"
+  x: "32,45,66,55,50,40"
+  y: "40,60,76,65,65,49"
+  predicters: "40,50"
+  xlim: "30,70"
+  ylim: "30,80"
+---
+
+```{r}
+library("statplosion")
+```
+
+```{r}
+names = c(params$xname,params$yname)
+x<-parselist(params$x)
+y<-parselist(params$y)
+predicters<-parselist(params$predicters)
+xlim<-parselist(params$xlim)
+ylim<-parselist(params$ylim)
+n <- length(x)
+model <- lm(y~x)
+m <- unname(model$coefficients[2])
+b <- unname(model$coefficients[1])
+yCellRange<- paste0("B1:B", n+1)
+xCellRange<- paste0("A1:A", n+1)
+
+```
+
+Here is the data we will work with for our analysis:
+
+```{r data, echo=FALSE}
+data_df<-data.frame(x=x,y=y)
+names <- colnames(data_df)
+hux_df<-create_hux_datatable(data_df)
+hux_df
+```
+
+Here is a scatterplot of this data:
+
+```{r fig.height=4, fig.width=5, fig.align="center"}
+plot(data_df, pch=19, 
+     xlim=xlim, ylim=ylim,
+     main="y vs x")
+```
+
+Make sure this data is entered into a spreadsheet in columns A and B of the spreadsheet. Include the names **_x_** and **_y_** in the first row as well. These are the sometimes called the **labels** for the variables.
+
+```{r spreadsheet, echo=FALSE}
+spread<-create_hux_spreadsheet(n+3,6)
+mtrx <-matrix(c("x",x,"y",y), nrow = n+1, byrow=F)
+spread <- paste_hux_subspreadsheet(spread, mtrx, col="A", row=1) 
+spread
+```
+
+Run the Tookpak add-in and select the linear regression tool. 
+
+- For **_Input Y Range_** enter in **`r yCellRange`**. 
+- For **_Input X Range_** enter in **`r xCellRange`**.
+
+You can click on the **Labels** option since you have included row 1 and this contains the labels **_x_** and **_y_** for your data.
+
+Now choose **D2** as the output cell. This is where your regression summary will go. Go ahead and run the analysis and it should output something like this:
+
+
+```{r}
+places <- 3 
+sum<-summary(model)
+multR <- sqrt(sum$r.squared)
+RSq <- sum$r.squared
+AdjR <- sum$adj.r.squared
+StdErrEstimate <- sum$sigma
+Obs <- length(sum$residuals)
+yValues <- model$model[,1]
+avgY <- mean(yValues)
+SSReg <- sum((model$fitted.values - avgY)**2)
+SSRes <- sum(model$residuals**2)
+SSTot <- SSReg+SSRes
+df1 <- sum$fstatistic["numdf"]
+df2 <- sum$fstatistic["dendf"]
+Total <- df1+df2
+MSReg <- SSReg/df1
+MSRes <- SSRes/df2
+FStat <- sum$fstatistic["value"]
+PValue <- pf(FStat,df1,df2,lower.tail=FALSE)
+B <- sum$coefficients[1,1]
+stdErrB <- sum$coefficients[1,2]
+tStatB <- sum$coefficients[1,3]
+pValueB <- sum$coefficients[1,4]
+M <- sum$coefficients[2,1]
+stdErrM <- sum$coefficients[2,2]
+tStatM <- sum$coefficients[2,3]
+pValueM <- sum$coefficients[2,4]
+spread<-create_hux_spreadsheet(20,10)
+submatrix <-matrix(c("x",x,"y",y), nrow = length(x)+1, byrow=F)
+spread <- paste_hux_subspreadsheet(spread, submatrix, col="A", row=1) 
+spread<-toolpak_output(spread, model, row=2, col="D", places=places)
+spread
+```
+
+Let's take a look at some of the output. 
+
+#### The Overall p-Value For A Significant Linear Model 
+  
+This is labeled **_Significance F_** in the output above. This is one of the first things you should look at.
+
+We have $p=`r round(PValue, places)`$
+
+- If this is less than $.05$, then you have a **_significant_** linear relationship between the $y$ and the $x$ and you can proceed to predictions but you still need to check on the accuracy (using $R^2$ and/or the _standard error_ say). 
+- If this is greater than or equal to $.05$, then the relationship is **_not significant_** and you should not use the model for predictions. 
+
+#### Accuracy of the Model
+
+Next you look at the accuracy of the model using $R^2$ and the standard error of the regression.
+
+We have $R^2=`r round(RSq, places)`$
+
+- If $R^2$ is close to $0.0$, then there will be a lot of scatter in the data and so the predictions may be inaccurate.
+- If $R^2$ is close to $1.0$, then the data will be close to a straight line and this means predictions will probably be more accurate. 
+
+We have $\text{std error}=`r round(StdErrEstimate, places)`$
+
+- This number is in the units of the $y$. You can think of it as a **_typical error_** you might make when using this model to do predictions. So predictions would be off typically by about $`r round(StdErrEstimate,places)`$ in units of $y$.
+
+#### Making Predictions 
+
+The regression equation $y=mx+b$ is easy to identify from the _Coefficients_: 
+
+- The **_intercept_** ($b=`r round(B, places)`$)
+- The **_slope_** ($m=`r round(M, places)`$)
+
+So the equation:
+
+$$
+y = `r round(M,places)`x + `r round(B,places)` 
+$$
+
+If the model is significant and the accuracy you examined above checks out for your situation you can go ahead and make predictions with this equation. You do this by plugging different $x$-values into the equation 

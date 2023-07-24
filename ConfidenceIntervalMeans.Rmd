@@ -1,0 +1,16 @@
+---
+pagetitle: "Confidence Interval for Means Problem"
+params:
+  xbar: 12.4 
+  s: 5.1 
+  n: 38 
+  confidence: 0.99
+---
+
+```{r child="question/ConfidenceIntervalMeansQuestion.Rmd"}
+```
+
+**_Solution:_**  
+
+```{r child="solution/ConfidenceIntervalMeansSolution.Rmd"}
+```

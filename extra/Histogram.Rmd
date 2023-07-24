@@ -1,0 +1,52 @@
+---
+pagetitle: "Histogram"
+params:
+  n: 14
+---
+
+```{r}
+n <- params$n
+main <- paste0("Histogram of ", n, " data values")
+values <- sample(c(2, 3, 4, 2, sample(1:8, n-4, replace=TRUE)))
+```
+
+First we choose $n=`r n`$ random data values in the interval $[1,10]$:
+
+`r values`
+
+Now here is a histogram showing the data:
+```{r fig.height=3, fig.width=4, fig.align='center'}
+hist(values, breaks=c(0,2,4,6,8,10), main=main)
+```
+
+```{r echo=F}
+h<-hist(values, breaks=c(0,2,4,6,8,10), plot=F)
+whichbin<-"endpoints 0 to 2"
+count<-h$counts[2]
+perc<-round(h$counts[2]/n,2)*100 
+v <- values[(values>2) & (values <=4)]
+```
+
+**Question**:    
+From this graph, determine whether a data value of 2 is included in the first bin (with endpoints 0 and 2) or the second bin from (with endpoints 2 and 4).  
+
+**Answer**:    
+**in the bin with endpoints 0 to 2**
+
+**Question**:    
+Find the count of values in the bin with endpoints 2 and 4.  
+    
+**Answer**:   
+**`r count`**  
+
+**Question**:    
+List all the data values (including repetitions) that are in the bin with endpoints 2 to 4.   
+
+**Answer**:   
+**`r v`**
+
+**Question**:    
+Find the percentage of data values in the bin with endpoints 2 and 4.  
+
+**Answer** :   
+**`r perc`%**

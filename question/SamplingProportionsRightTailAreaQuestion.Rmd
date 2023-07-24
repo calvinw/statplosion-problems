@@ -1,0 +1,15 @@
+---
+pagetitle: "Sampling Proportions Right Tail Area Question"
+params:
+  count: 190 
+  n: 250 
+  p: 0.79
+---
+
+```{r}
+p<-params$p
+count<-params$count
+n<-params$n
+```
+
+Suppose we have a population proportion of $`r 100*p`\%$ and take a sample of size $`r n`$. Suppose the sample proportion from that sample is $`r count`$ out of $`r n`$. What is the chance of getting that sample proportion or more?
