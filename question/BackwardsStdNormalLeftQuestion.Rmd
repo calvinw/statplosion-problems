@@ -2,6 +2,8 @@
 pagetitle: "Backwards Std Normal Left Tail Area Question"
 params:
   area: 0.10
+execute:
+  echo: false 
 ---
 
 ```{r}

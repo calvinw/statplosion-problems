@@ -1,0 +1,85 @@
+BackwardsStdNormalLeftQuestion: [html](question/BackwardsStdNormalLeftQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/BackwardsStdNormalLeftQuestion.Rmd)  
+BackwardsStdNormalLeftSolution: [html](solution/BackwardsStdNormalLeftSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/BackwardsStdNormalLeftSolution.Rmd)  
+
+BackwardsStdNormalRightQuestion: [html](question/BackwardsStdNormalRightQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/BackwardsStdNormalRightQuestion.Rmd)  
+BackwardsStdNormalRightSolution: [html](solution/BackwardsStdNormalRightSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/BackwardsStdNormalRightSolution.Rmd)  
+
+ConfidenceIntervalMeansQuestion: [html](question/ConfidenceIntervalMeansQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/ConfidenceIntervalMeansQuestion.Rmd)  
+ConfidenceIntervalMeansSolution: [html](solution/ConfidenceIntervalMeansSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/ConfidenceIntervalMeansSolution.Rmd)  
+
+ConfidenceIntervalProportionsQuestion: [html](question/ConfidenceIntervalProportionsQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/ConfidenceIntervalProportionsQuestion.Rmd)  
+ConfidenceIntervalProportionsSolution: [html](solution/ConfidenceIntervalProportionsSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/ConfidenceIntervalProportionsSolution.Rmd)  
+
+HypothesisTestMeansLeftTailQuestion: [html](question/HypothesisTestMeansLeftTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/HypothesisTestMeansLeftTailQuestion.Rmd)  
+HypothesisTestMeansLeftTailSolution: [html](solution/HypothesisTestMeansLeftTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/HypothesisTestMeansLeftTailSolution.Rmd)  
+
+HypothesisTestMeansLeftTailZTestQuestion: [html](question/HypothesisTestMeansLeftTailZTestQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/HypothesisTestMeansLeftTailZTestQuestion.Rmd)  
+HypothesisTestMeansLeftTailZTestSolution: [html](solution/HypothesisTestMeansLeftTailZTestSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/HypothesisTestMeansLeftTailZTestSolution.Rmd)  
+
+HypothesisTestPropLeftTailQuestion: [html](question/HypothesisTestPropLeftTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/HypothesisTestPropLeftTailQuestion.Rmd)  
+HypothesisTestPropLeftTailSolution: [html](solution/HypothesisTestPropLeftTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/HypothesisTestPropLeftTailSolution.Rmd)  
+
+HypothesisTestPropRightTailQuestion: [html](question/HypothesisTestPropRightTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/HypothesisTestPropRightTailQuestion.Rmd)  
+HypothesisTestPropRightTailSolution: [html](solution/HypothesisTestPropRightTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/HypothesisTestPropRightTailSolution.Rmd)  
+
+NormalAreaBetweenQuestion: [html](question/NormalAreaBetweenQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/NormalAreaBetweenQuestion.Rmd)  
+NormalAreaBetweenSolution: [html](solution/NormalAreaBetweenSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/NormalAreaBetweenSolution.Rmd)  
+
+NormalLeftTailQuestion: [html](question/NormalLeftTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/NormalLeftTailQuestion.Rmd)  
+NormalLeftTailSolution: [html](solution/NormalLeftTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/NormalLeftTailSolution.Rmd)  
+
+NormalRightTailQuestion: [html](question/NormalRightTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/NormalRightTailQuestion.Rmd)  
+NormalRightTailSolution: [html](solution/NormalRightTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/NormalRightTailSolution.Rmd)  
+
+RegressionSlopeInterceptQuestion: [html](question/RegressionSlopeInterceptQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/RegressionSlopeInterceptQuestion.Rmd)  
+RegressionSlopeInterceptSolution: [html](solution/RegressionSlopeInterceptSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/RegressionSlopeInterceptSolution.Rmd)  
+
+RegressionToolpakQuestion: [html](question/RegressionToolpakQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/RegressionToolpakQuestion.Rmd)  
+RegressionToolpakSolution: [html](solution/RegressionToolpakSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/RegressionToolpakSolution.Rmd)  
+
+SamplingMeansLeftTailAreaQuestion: [html](question/SamplingMeansLeftTailAreaQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/SamplingMeansLeftTailAreaQuestion.Rmd)  
+SamplingMeansLeftTailAreaSolution: [html](solution/SamplingMeansLeftTailAreaSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/SamplingMeansLeftTailAreaSolution.Rmd)  
+
+SamplingMeansRightTailAreaQuestion: [html](question/SamplingMeansRightTailAreaQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/SamplingMeansRightTailAreaQuestion.Rmd)  
+SamplingMeansRightTailAreaSolution: [html](solution/SamplingMeansRightTailAreaSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/SamplingMeansRightTailAreaSolution.Rmd)  
+
+SamplingProportionsLeftTailAreaQuestion: [html](question/SamplingProportionsLeftTailAreaQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/SamplingProportionsLeftTailAreaQuestion.Rmd)  
+SamplingProportionsLeftTailAreaSolution: [html](solution/SamplingProportionsLeftTailAreaSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/SamplingProportionsLeftTailAreaSolution.Rmd)  
+
+SamplingProportionsRightTailAreaQuestion: [html](question/SamplingProportionsRightTailAreaQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/SamplingProportionsRightTailAreaQuestion.Rmd)  
+SamplingProportionsRightTailAreaSolution: [html](solution/SamplingProportionsRightTailAreaSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/SamplingProportionsRightTailAreaSolution.Rmd)  
+
+ScatterplotQuestion: [html](question/ScatterplotQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/ScatterplotQuestion.Rmd)  
+ScatterplotSolution: [html](solution/ScatterplotSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/ScatterplotSolution.Rmd)  
+
+SolveBackwardsLeftTailQuestion: [html](question/SolveBackwardsLeftTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/SolveBackwardsLeftTailQuestion.Rmd)  
+SolveBackwardsLeftTailSolution: [html](solution/SolveBackwardsLeftTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/SolveBackwardsLeftTailSolution.Rmd)  
+
+SolveBackwardsRightTailQuestion: [html](question/SolveBackwardsRightTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/SolveBackwardsRightTailQuestion.Rmd)  
+SolveBackwardsRightTailSolution: [html](solution/SolveBackwardsRightTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/SolveBackwardsRightTailSolution.Rmd)  
+
+StdNormalAreaBetweenQuestion: [html](question/StdNormalAreaBetweenQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/StdNormalAreaBetweenQuestion.Rmd)  
+StdNormalAreaBetweenSolution: [html](solution/StdNormalAreaBetweenSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/StdNormalAreaBetweenSolution.Rmd)  
+
+StdNormalAreaBetweenSpreadsheetQuestion: [html](question/StdNormalAreaBetweenSpreadsheetQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/StdNormalAreaBetweenSpreadsheetQuestion.Rmd)  
+StdNormalAreaBetweenSpreadsheetSolution: [html](solution/StdNormalAreaBetweenSpreadsheetSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/StdNormalAreaBetweenSpreadsheetSolution.Rmd)  
+
+StdNormalLeftTailQuestion: [html](question/StdNormalLeftTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/StdNormalLeftTailQuestion.Rmd)  
+StdNormalLeftTailSolution: [html](solution/StdNormalLeftTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/StdNormalLeftTailSolution.Rmd)  
+
+StdNormalLeftTailSpreadsheetQuestion: [html](question/StdNormalLeftTailSpreadsheetQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/StdNormalLeftTailSpreadsheetQuestion.Rmd)  
+StdNormalLeftTailSpreadsheetSolution: [html](solution/StdNormalLeftTailSpreadsheetSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/StdNormalLeftTailSpreadsheetSolution.Rmd)  
+
+StdNormalRightTailQuestion: [html](question/StdNormalRightTailQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/StdNormalRightTailQuestion.Rmd)  
+StdNormalRightTailSolution: [html](solution/StdNormalRightTailSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/StdNormalRightTailSolution.Rmd)  
+
+StdNormalRightTailSpreadsheetQuestion: [html](question/StdNormalRightTailSpreadsheetQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/StdNormalRightTailSpreadsheetQuestion.Rmd)  
+StdNormalRightTailSpreadsheetSolution: [html](solution/StdNormalRightTailSpreadsheetSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/StdNormalRightTailSpreadsheetSolution.Rmd)  
+
+TableLookupQuestion: [html](question/TableLookupQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/TableLookupQuestion.Rmd)  
+TableLookupSolution: [html](solution/TableLookupSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/TableLookupSolution.Rmd)  
+
+ZValueQuestion: [html](question/ZValueQuestion.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](question/ZValueQuestion.Rmd)  
+ZValueSolution: [html](solution/ZValueSolution.html)&nbsp;&nbsp;&nbsp;&nbsp;[Rmd](solution/ZValueSolution.Rmd)  
+
+

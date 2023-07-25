@@ -1,0 +1,12 @@
+project:
+  title: "statplosion-problems"
+  preview:
+    port: 4200
+    browser: false
+execute: 
+  echo: false 
+format: 
+  html: 
+    minimal: true
+    html-math-method:
+      method: mathjax
