@@ -5,8 +5,4 @@ project:
     browser: false
 execute: 
   echo: false 
-format: 
-  html: 
-    minimal: true
-    html-math-method:
-      method: mathjax
+  keep-md: true
